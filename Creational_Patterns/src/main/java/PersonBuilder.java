@@ -4,9 +4,6 @@ public class PersonBuilder {
     private int age;
     private String address;
 
-    private boolean isHasAge;
-    private boolean isHasAddress;
-
     public PersonBuilder setName(String name) {
         this.name = name;
         return this;
@@ -18,18 +15,16 @@ public class PersonBuilder {
     }
 
     public PersonBuilder setAge(int age) {
-        if (age != 0) {
+        if (age != 0)
             this.age = age;
-            isHasAge = true;
-        }
+
         return this;
     }
 
     public PersonBuilder setAddress(String address) {
-        if (address != null) {
+        if (address != null)
             this.address = address;
-            isHasAddress = true;
-        }
+
         return this;
     }
 
@@ -39,7 +34,7 @@ public class PersonBuilder {
         } else if (age < 0) {
             throw new IllegalArgumentException("Age cannot be negative!");
         } else {
-            return new Person(name, surname, age, address, isHasAge, isHasAddress);
+            return new Person(name, surname, age, address);
         }
     }
 }

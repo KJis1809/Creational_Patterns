@@ -4,9 +4,6 @@ public class Person {
     private int age;
     private String address;
 
-    private boolean isHasAge;
-    private boolean isHasAddress;
-
     public Person(String name, String surname) {
         this.name = name;
         this.surname = surname;
@@ -25,15 +22,6 @@ public class Person {
         this.address = address;
     }
 
-    public Person(String name, String surname, int age, String address, boolean isHasAge, boolean isHasAddress) {
-        this.name = name;
-        this.surname = surname;
-        this.age = age;
-        this.address = address;
-        this.isHasAge = isHasAge;
-        this.isHasAddress = isHasAddress;
-    }
-
     public boolean hasAge() {
         return getAge() != 0;
     }
@@ -43,11 +31,10 @@ public class Person {
     }
 
     public void happyBirthday() {
-        if (!hasAge()) {
-            isHasAge = true;
-        }
-
-        age++;
+        if (hasAge())
+            age++;
+        else
+            System.out.println("* WARNING: Person '" + name + "' has no age" );
     }
 
     public String getName() {
@@ -84,7 +71,7 @@ public class Person {
                 ", age: " + age +
                 ", address: " + address +
                 " }; " +
-                " isHasAge: " + isHasAge +
-                " / isHasAddress: " + isHasAddress;
+                " isHasAge: " + hasAge() +
+                " / isHasAddress: " + hasAddress();
     }
 }
